@@ -8,9 +8,7 @@ function Bookshelf() {
     const [newBook, setNewBook] = useState({ title: '', author: '' })
 
     function handleInputChange(event) {
-        console.log('Event:', event)
         const { name, value } = event.target
-        console.log('Input changed:', name, value)
         setNewBook({ ...newBook, [name]: value })
     }
 
@@ -32,7 +30,6 @@ function Bookshelf() {
                         type="text"
                         value={newBook.title}
                         onChange={handleInputChange}
-                        
                     />
 
                     <label htmlFor="author">Author</label>
@@ -48,15 +45,12 @@ function Bookshelf() {
                 </form>
             </div>
             <div className="bookCardsDiv">
-                {books.map((book, index) => {
-                    console.log('Book card:', book)
-                    return (
-                        <div className="bookCard" key={`${book.title}-${book.author}-${index}`}>
-                            <h4>{book.title}</h4>
-                            <p>{book.author}</p>
-                        </div>
-                    )
-                })}
+                {books.map((book, index) => (
+                    <div className="bookCard" key={`${book.title}-${book.author}-${index}`}>
+                        <h4>{book.title}</h4>
+                        <p>{book.author}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
